@@ -2,17 +2,17 @@ import { POST, LOGIN, LOGOUT } from '../actions/actions';
 
 const initState = {
     user : '',
-    isLoggedIn : '',
+    isLoggedIn : false,
     todos : [ 
         {
             value : "test",
             var : 0,
-            key : '#'+Math.floor(Math.random()*16777215).toString(8)
+            key : '$'+Math.floor(Math.random()*16777215).toString(8)+'$'
         },
         {
             value : "test",
             var : 0,
-            key : '#'+Math.floor(Math.random()*16777215).toString(8)
+            key : '$'+Math.floor(Math.random()*16777215).toString(8)+'$'
         }
     ]
 }

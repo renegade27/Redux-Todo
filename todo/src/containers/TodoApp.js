@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import TodoList from './TodoList';
 import Login from './Login';
+import {login} from '../actions/actions';
 import './App.css';
 
 class TodoApp extends Component {
@@ -17,8 +18,8 @@ class TodoApp extends Component {
     render() {
         return (
             <>
-                <Route exact path='/login' component={Login}/>
-                <Route path='/' component={TodoList}/>
+                <Route exact path='/' render={(props) => <Login {...props} login={login}></Login>}/>
+                <Route exact path='/todolist' component={TodoList}/>
             </>
         );
     }
