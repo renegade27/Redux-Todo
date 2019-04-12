@@ -1,6 +1,7 @@
 export const POST = 'POST';
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const REMOVE = 'REMOVE';
 
 export const post = newTodo => {
     return {
@@ -20,5 +21,12 @@ export const logout = () => {
     return {
         type : LOGOUT,
         payload : false
+    }
+}
+
+export const remove = item => {
+    return {
+        type : REMOVE,
+        payload : item.key
     }
 }

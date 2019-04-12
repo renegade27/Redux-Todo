@@ -3,7 +3,18 @@ import { POST, LOGIN, LOGOUT } from '../actions/actions';
 const initState = {
     user : '',
     isLoggedIn : '',
-    todos : [ ]
+    todos : [ 
+        {
+            value : "test",
+            var : 0,
+            key : '#'+Math.floor(Math.random()*16777215).toString(8)
+        },
+        {
+            value : "test",
+            var : 0,
+            key : '#'+Math.floor(Math.random()*16777215).toString(8)
+        }
+    ]
 }
 
 export default (state=initState, action) => {
