@@ -6,10 +6,12 @@ const initState = {
     todos : [ 
         {
             value : "test",
+            poster : 'Admin',
             key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         },
         {
             value : "test",
+            poster : 'Admin',
             key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         }
     ]

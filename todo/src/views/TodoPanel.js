@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { post, logout} from '../actions';
 import { connect } from 'react-redux';
+import './TodoPanel.css';
 
 class TodoPanel extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class TodoPanel extends Component {
         e.preventDefault();
         this.props.post({
             value : this.state.formValue,
+            poster : this.props.user,
             key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         });
         this.setState({formValue : ''});
@@ -30,8 +32,8 @@ class TodoPanel extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.formHandler} className="todo-menu">
+            <div className="todo-menu">
+                <form onSubmit={this.formHandler}>
                     <input
                         name="formValue"
                         value={this.state.formValue}
@@ -40,11 +42,19 @@ class TodoPanel extends Component {
                     />
                     <button type="submit">Create</button>
                 </form>
-                <button onClick={this.logoutHandler}> Logout </button>
+                <button className="logout" onClick={this.logoutHandler}> Logout </button>
+                <p className="status">{`User: ${this.props.user} Todos: ${this.props.todos}`}</p>
             </div>
         );
     }
 
 }
 
-export default connect(null, {post, logout})(TodoPanel);
+const mapStateToProps = (state) => {
+    return {
+        user : state.user,
+        todos : state.todos.length
+    }
+}
+
+export default connect(mapStateToProps, {post, logout})(TodoPanel);

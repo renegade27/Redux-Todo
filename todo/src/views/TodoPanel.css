@@ -1,0 +1,33 @@
+.todo-menu {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    background-color: grey;
+    width: 100%;
+}
+
+.todo-menu:hover {
+    opacity: 1.0;
+    transition: 1s;
+}
+
+input {
+    height: 50px;
+}
+
+button {
+    height: 50px;
+}
+
+.logout {
+    margin: 0 50px 0 5%;
+    align-self: center;
+}
+
+.status {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+}

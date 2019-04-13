@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import './TodoList.css';
 import Todo from './Todo';
 import TodoPanel from './TodoPanel';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, post, remove } from '../actions';
 
@@ -26,8 +26,6 @@ class TodoList extends Component {
         return (
             <div className="app-wrapper">
                 <TodoPanel {...this.props}/>
-                <Link to='/'>go back</Link>
-                <p>{this.props.user}</p>
                 <div className="todo-list">
                     {
                     this.props.todos.map(todo => {

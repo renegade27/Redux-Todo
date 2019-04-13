@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router} from 'react-router-dom';
 import reducer from './reducer';
-import TodoApp from './containers/TodoApp';
+import TodoApp from './views/TodoApp';
 
 const store = createStore(reducer);
 

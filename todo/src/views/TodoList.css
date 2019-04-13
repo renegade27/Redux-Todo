@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+.app-wrapper {
+    padding: 5% 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.todo-list {
+    background-color: lightgrey;
+    opacity: 0.7;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.todo-list:hover {
+    opacity: 1.0;
+    transition: 1s;
+}
+
+.todo {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-el {
+    margin: 5px 20px;
+    width: 100%;
+}
