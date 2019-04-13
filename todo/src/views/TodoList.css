@@ -7,7 +7,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: lightgray;
 }
 
 .todo-list {
@@ -15,6 +14,7 @@
     opacity: 0.7;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -24,10 +24,15 @@
 }
 
 .todo {
+    width: 30%;
     text-align: center;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.todo:hover {
+
 }
 
 .form-el {
