@@ -1,13 +1,12 @@
 import React from 'react';
-import { remove } from '../actions/actions';
 
-
-const Todo = ({todo}) => {
+const Todo = (props) => {
     return (
-        <div class="todo">
-            <h2>{todo.value}</h2>
-            <p>{todo.var}</p>
-            <p>{todo.key}</p> 
+        <div className="todo">
+            <h2>{props.todo.value}</h2>
+            <p>{props.todo.var}</p>
+            <p>{props.todo.key}</p>
+            <button onClick={() => { props.removeHelper(props.todo.key) }}>Remove</button>
         </div>
     );
 }

@@ -24,9 +24,9 @@ export const logout = () => {
     }
 }
 
-export const remove = item => {
+export const remove = newTodos => {
     return {
         type : REMOVE,
-        payload : item.key
+        payload : newTodos
     }
 }

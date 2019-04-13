@@ -4,7 +4,7 @@ import './index.css';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router} from 'react-router-dom';
-import reducer from './reducer/reducer';
+import reducer from './reducer';
 import TodoApp from './containers/TodoApp';
 
 const store = createStore(reducer);

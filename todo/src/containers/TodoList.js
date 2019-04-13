@@ -1,28 +1,38 @@
 import React, {Component} from 'react';
 import Todo from './Todo';
+import TodoPanel from './TodoPanel';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout, post } from '../actions/actions';
+import { logout, post, remove } from '../actions';
 
 
 
 class TodoList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             todo : ''
         }
     }
 
+    removeHandler = (key) => {
+        let arr = this.props.todos.filter( todo => {
+            return todo.key !== key
+        });
+        this.props.remove(arr);
+    }
+
     render() {
         return (
             <div className="app-wrapper">
-                {/* <TodoPanel /> */}
-                <p> TodoPanel </p>
+                <TodoPanel {...this.props}/>
+                <Link to='/'>go back</Link>
+                <p>{this.props.user}</p>
                 <div className="todo-list">
                     {
                     this.props.todos.map(todo => {
-                        return <Todo todo={todo} />
-                    })};
+                        return <Todo todo={todo} removeHelper={this.removeHandler}/>
+                    })}
                 </div>
             </div>
          );
@@ -31,8 +41,9 @@ class TodoList extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        user : state.user,
         todos : state.todos
     };
 };
 
-export default connect(mapStateToProps, { logout, post })(TodoList);
+export default connect(mapStateToProps, { logout, post, remove })(TodoList);

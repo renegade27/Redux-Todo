@@ -1,4 +1,4 @@
-import { POST, LOGIN, LOGOUT } from '../actions/actions';
+import { POST, LOGIN, LOGOUT, REMOVE } from '../actions';
 
 const initState = {
     user : '',
@@ -6,25 +6,22 @@ const initState = {
     todos : [ 
         {
             value : "test",
-            var : 0,
-            key : '$'+Math.floor(Math.random()*16777215).toString(8)+'$'
+            key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         },
         {
             value : "test",
-            var : 0,
-            key : '$'+Math.floor(Math.random()*16777215).toString(8)+'$'
+            key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         }
     ]
 }
 
-export default (state=initState, action) => {
-    let prevState = state;
+export default (prevState=initState, action) => {
     switch(action.type) {
         case POST:
             return { 
                 user : prevState.user,
                 isLoggedIn : prevState.isLoggedIn,
-                todos : [ ...state.todos, action.payload]
+                todos : [ ...prevState.todos, action.payload]
             };
         case LOGIN:
             return {
@@ -38,7 +35,14 @@ export default (state=initState, action) => {
                 isLoggedIn : action.payload,
                 todos : prevState.todos
             };
-        default: 
+        case REMOVE:
+            return {
+                user : '',
+                isLoggedIn : prevState.isLoggedIn,
+                todos : action.payload
+            };
+        default:
+            console.log('default');
             return prevState;
     }   
 };

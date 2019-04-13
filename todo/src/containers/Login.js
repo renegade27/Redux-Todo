@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
-import './Login.css';
+import { login } from '../actions';
+import { connect } from 'react-redux';
 
 const LoginPage = styled.div`
     display: flex;
@@ -47,8 +47,6 @@ const LoginBtn = styled.button`
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
-        this.logHandler=props.logHandler;
         this.state={
             username:'',
             password:''
@@ -61,8 +59,12 @@ class Login extends React.Component {
 
     loginHelper = e => {
         e.preventDefault();
-        this.props.login(this.state.username)
+        this.props.history.push('/todolist');
+        this.props.login(this.state.username);
+        this.setState({username:'', password:''})
     }
+
+
 
     render() {
         return (
@@ -85,13 +87,11 @@ class Login extends React.Component {
                         value={this.state.password}
                         onChange={this.inputHandler}
                     />
-                    <Link to='/todolist'>
-                        <LoginBtn className="login-button" onClick={this.dataHandler}>Login</LoginBtn>
-                    </Link>
+                    <LoginBtn className="login-button">Login</LoginBtn>
                 </LoginForm>
             </LoginPage>
         );
     }
 }
 
-export default Login;
+export default connect(null, { login })(Login);
