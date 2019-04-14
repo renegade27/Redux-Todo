@@ -1,4 +1,4 @@
-import { POST, LOGIN, LOGOUT, REMOVE } from '../actions';
+import { POST, LOGIN, LOGOUT, REMOVE, TOGGLE_COMPLETE } from '../actions';
 
 const initState = {
     user : '',
@@ -7,11 +7,13 @@ const initState = {
         {
             value : "test",
             poster : 'Admin',
+            completed : true,
             key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         },
         {
             value : "test",
             poster : 'Admin',
+            completed : false,
             key : '$'+Math.floor(Math.random()*16777215).toString(12)+'$'
         }
     ]
@@ -39,9 +41,15 @@ export default (prevState=initState, action) => {
             };
         case REMOVE:
             return {
-                user : '',
+                user : prevState.user,
                 isLoggedIn : prevState.isLoggedIn,
                 todos : action.payload
+            };
+        case TOGGLE_COMPLETE:
+            return {
+                user : prevState.user,
+                isLoggedIn : prevState.isLoggedIn,
+                todos : prevState.todos.map(todo => (todo.key === action.payload ? { ...todo , completed : !todo.completed } : {...todo}))
             };
         default:
             console.log('default');

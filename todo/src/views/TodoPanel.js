@@ -20,6 +20,7 @@ class TodoPanel extends Component {
         this.props.post({
             value : this.state.formValue,
             poster : this.props.user,
+            completed : false,
             key : '$'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6) + '$'
         });
         this.setState({formValue : ''});
