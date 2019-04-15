@@ -44,7 +44,7 @@ class TodoPanel extends Component {
                     <button type="submit">Create</button>
                 </form>
                 <button className="logout" onClick={this.logoutHandler}> Logout </button>
-                <p className="status">{`User: ${this.props.user} Todos: ${this.props.todos}`}</p>
+                <p className="status">{`User: ${this.props.user} Todos: ${this.props.todos.filter(todo => todo.poster === this.props.user).length}`}</p>
             </div>
         );
     }
@@ -54,7 +54,7 @@ class TodoPanel extends Component {
 const mapStateToProps = (state) => {
     return {
         user : state.user,
-        todos : state.todos.length
+        todos : state.todos
     }
 }
 
